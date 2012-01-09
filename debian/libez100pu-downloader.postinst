@@ -1,0 +1,122 @@
+#!/bin/sh
+
+set -e
+
+EZ_VERSION=1.5.3
+FILENAME=2011810151801402.zip
+SHA256SUM_TGZ="ced9161eab8a03ebebd356569f7cb3f8f5ecdca497101520f7160fc863d043cf"
+PARTNER_URL="http://www.casauto.com.tw/db/pictures/modules/PDT/PDT060207001/$FILENAME"
+
+. /usr/share/debconf/confmodule
+
+fp_exit_with_error() {
+	echo $1
+	echo "libez100pu is NOT installed."
+	db_fset libez100pu-downloader/local seen false
+	db_fset libez100pu-downloader/httpget seen false
+	db_set libez100pu-downloader/httpget false
+	exit 1
+}
+
+fp_download_and_unpack() {
+
+	cd /var/cache/libez100pu-downloader
+	
+	db_get libez100pu-downloader/local
+	
+	if [ -d "$RET" -a -f "$RET"/$FILENAME ]; then
+
+		echo "Installing from local file $RET/$FILENAME"
+		cp -f -p "$RET"/$FILENAME ${FILENAME}_TEMP
+		mv -f ${FILENAME}_TEMP $FILENAME
+	
+	else # no local file
+	
+	        db_get libez100pu-downloader/httpget
+	        if [ "$RET" != "true" ]; then
+		        fp_exit_with_error "download or license refused"
+	        fi
+
+	        # use apt proxy
+	        APT_PROXIES=$(apt-config shell \
+	        http_proxy Acquire::http::Proxy \
+	        https_proxy Acquire::https::Proxy \
+	        ftp_proxy Acquire::ftp::Proxy \
+	        )
+
+	        if [ -n "$APT_PROXIES" ]; then
+		        eval export $APT_PROXIES
+	        fi
+
+	        # setting wget options
+	        :> wgetrc
+	        echo "noclobber = off" >> wgetrc
+	        echo "dir_prefix = ." >> wgetrc
+	        echo "dirstruct = off" >> wgetrc
+	        echo "verbose = on" >> wgetrc
+	        echo "progress = dot:default" >> wgetrc
+	        echo "tries = 2" >> wgetrc
+
+	        # downloading the plugin
+	        echo "Downloading..."
+	        rm -f $FILENAME
+	        WGETRC=wgetrc wget $PARTNER_URL -O $FILENAME \
+		        || fp_exit_with_error "download failed"
+	        rm -f wgetrc
+	        echo "Download done."
+	        
+	fi # end if local file
+
+	# verify SHA256 checksum of (copied or downloaded) tarball
+	rm -rf 2011810151801402/
+        echo "$SHA256SUM_TGZ  $FILENAME" | sha256sum -c > /dev/null 2>&1 \
+		|| fp_exit_with_error "sha256sum mismatch $FILENAME"
+
+	# unpacking and checking the plugin
+	unzip $FILENAME > /dev/null 2>&1 || fp_exit_with_error "cannot unpack plugin"
+}
+
+fp_download_and_unpack
+
+if uname -p | grep x86_64 > /dev/null 2>&1 ; then
+        FULLPATH=EZUSB_Linux_x86_64_v$EZ_VERSION/driver_ezusb_v${EZ_VERSION}_for_64_bit/drivers
+        unzip EZUSB_Linux/EZUSB_Linux_x86_64_v$EZ_VERSION.zip > /dev/null 2>&1 || fp_exit_with_error "cannot unpack library"
+else
+        FULLPATH=EZUSB_Linux_x86_v$EZ_VERSION/driver_ezusb_v${EZ_VERSION}/drivers
+        unzip EZUSB_Linux/EZUSB_Linux_x86_v$EZ_VERSION.zip > /dev/null 2>&1 || fp_exit_with_error "cannot unpack library"
+fi
+
+install -m 644 $FULLPATH/Info.plist /usr/lib/pcsc/drivers/EZ100PU.bundle/Contents/
+install -m 644 $FULLPATH/ezusb.so /usr/lib/pcsc/drivers/EZ100PU.bundle/Contents/Linux/
+
+echo "libez100pu installed."
+
+rm -rf EZUSB_Linux
+
+db_fset libez100pu-downloader/local seen false
+db_fset libez100pu-downloader/httpget seen false
+db_set libez100pu-downloader/httpget false
+
+case "$1" in
+    configure)
+        if [ -x /etc/init.d/pcscd ]
+        then
+            invoke-rc.d pcscd restart 3> /dev/null
+        fi
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
+
+# vim: ts=2 sw=2

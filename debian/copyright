@@ -1,0 +1,28 @@
+This package was debianized by Daniele Napolitano <dn@libersoft.it> on
+Fri,  27 Nov 2011 15:42:06 +0100.
+
+Copyright 2011 Daniele Napolitano <dn@libersoft.it>
+
+License:
+
+   This package is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by
+   the Free Software Foundation; either version 2 of the License, or
+   (at your option) any later version.
+
+   This package is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+   along with this package; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
+
+On Debian systems, the complete text of the GNU General
+Public License can be found in `/usr/share/common-licenses/GPL'.
+
+Note that this package does not contain any software from
+Castles Technology Co., Ltd. This package does however contain a script
+to download and install the program. All information regarding the program
+itself can be found on this website: http://www.casauto.com.tw/

@@ -1,0 +1,3 @@
+/lib/udev/rules.d
+/var/cache/libez100pu-downloader
+/usr/lib/pcsc/drivers/EZ100PU.bundle/Contents/Linux

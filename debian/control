@@ -1,0 +1,20 @@
+Source: libez100pu
+Section: misc
+Priority: optional
+Maintainer: Daniele Napolitano <dn@libersoft.it>
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.2
+Homepage: http://www.casauto.com.tw/
+
+Package: libez100pu-downloader
+Architecture: all
+Depends: ${misc:Depends}, wget, unzip
+Description: PC/SC driver for the EZ100PU smart card reader
+ This library provides a PC/SC IFD handler implementation for the Castles
+ EZ100PU smart card reader.
+ .
+ This package is needed to communicate with the EZ100PU smartcard
+ readers through the PC/SC Lite resource manager (pcscd).
+ .
+ Needed files will be downloaded from http://www.casauto.com.tw/.
+

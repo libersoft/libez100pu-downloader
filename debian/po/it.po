@@ -1,0 +1,64 @@
+# Italian translation of file-protector-downloader-5.1.8.3-0_templates.po
+# Daniele Napolitano 2011
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: file-protector-downloader-5.1.8.3-0_templates\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-11-28 16:52+0100\n"
+"PO-Revision-Date: 2011-11-28 16:54+0100\n"
+"Last-Translator: Daniele Napolitano <dn@libersoft.it>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Description
+#: ../libez100pu-downloader.templates:4
+msgid "Location to the local file:"
+msgstr "Indirizzo del file locale:"
+
+#. Description
+#: ../libez100pu-downloader.templates:4
+msgid ""
+"Have you already downloaded the .tar.gz package from the Internet? If so, "
+"please enter the directory you downloaded it into. Do not include the "
+"filename here. If you have not already downloaded it, leave this blank and "
+"the package will be downloaded automatically."
+msgstr ""
+"Il pacchetto .tar.gz è già stato scaricato da internet?Se sì, indicare la "
+"directory in cui è stato salvato. Non indicare anche il nome del pacchetto ."
+"tar.gz. Se non lo si è ancora scaricato, lasciare l'indirizzo vuoto, in modo "
+"tale che il pacchetto verrà scaricato automaticamente."
+
+#. Description
+#: ../libez100pu-downloader.templates:12
+msgid "File not found"
+msgstr "File non trovato"
+
+#. Description
+#: ../libez100pu-downloader.templates:12
+msgid ""
+"The .tar.gz file does not exist in the directory you entered.  Please try "
+"again. Enter the path of the directory that the package is in (don't type "
+"the filename at the end of the path)."
+msgstr ""
+"Il pacchetto .tar.gz non esiste nella directory indicata. Inserire il "
+"percorso in cui risiede il pacchetto (non inserire il nome del pacchetto ."
+"tar.gz alla fine del percorso)."
+
+#. Description
+#: ../libez100pu-downloader.templates:20
+msgid "Do you accept the license and do you want to download EZ100PU"
+msgstr "Accettare la licenza e scaricare EZ100PU"
+
+#. Description
+#: ../libez100pu-downloader.templates:20
+msgid ""
+"driver now? EZ100PU driver is to be downloaded from http://www.casauto.com."
+"tw. This can be done automatically now."
+msgstr ""
+"driver adesso? Il driver EZ100PU sta per essere scaricato da "
+"http://www.casauto.com. Questo può essere fatto automaticamente adesso."
