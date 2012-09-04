@@ -4,7 +4,7 @@
 # If not adding the device, go away
 ACTION!="add", GOTO="pcscd_ezusb_rules_end"
 SUBSYSTEM!="usb", GOTO="pcscd_ezusb_rules_end"
-ENV{DEVTYPE}!="usb_device", GOTO="pcscd_ezusb8_rules_end"
+ENV{DEVTYPE}!="usb_device", GOTO="pcscd_ezusb_rules_end"
 
 # Castles Technology Co., Ltd EZ100USB PC/SC Smart Card Reader
 ATTRS{idVendor}=="0ca6", ATTRS{idProduct}=="0010", GROUP="pcscd"
