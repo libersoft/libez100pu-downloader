@@ -1,10 +1,10 @@
 Source: libez100pu
 Section: misc
 Priority: optional
-Maintainer: Daniele Napolitano <dn@libersoft.it>
+Maintainer: Daniele Napolitano <dnax88@gmail.com>
 Build-Depends: debhelper (>= 8)
 Standards-Version: 3.9.2
-Homepage: http://www.casauto.com.tw/
+Homepage: http://www.castech.com.tw/
 
 Package: libez100pu-downloader
 Architecture: all
@@ -16,5 +16,5 @@ Description: PC/SC driver for the EZ100PU smart card reader
  This package is needed to communicate with the EZ100PU smartcard
  readers through the PC/SC Lite resource manager (pcscd).
  .
- Needed files will be downloaded from http://www.casauto.com.tw/.
+ Needed files will be downloaded from http://www.castech.com.tw/.
 

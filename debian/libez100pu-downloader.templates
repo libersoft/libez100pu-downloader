@@ -18,6 +18,6 @@ Template: libez100pu-downloader/httpget
 Type: boolean
 Default: true
 _Description: Do you accept the license and do you want to download EZ100PU
- driver now? EZ100PU driver is to be downloaded from http://www.casauto.com.tw.
+ driver now? EZ100PU driver is to be downloaded from http://www.castech.com.tw.
  This can be done automatically now.
 

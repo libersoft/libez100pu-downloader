@@ -1,3 +1,9 @@
+libez100pu (1.5.3-3) unstable; urgency=low
+
+  * Change of company URL.
+
+ -- Daniele Napolitano <dnax88@gmail.com>  Mon, 02 Nov 2015 10:15:01 +0100
+
 libez100pu (1.5.3-2) unstable; urgency=low
 
   * Fixed an udev rule typo
