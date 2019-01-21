@@ -3,9 +3,9 @@
 set -e
 
 EZ_VERSION=1.5.3
-FILENAME=2011810151801402.zip
+FILENAME=201511920271676073.zip
 SHA256SUM_TGZ="ced9161eab8a03ebebd356569f7cb3f8f5ecdca497101520f7160fc863d043cf"
-PARTNER_URL="http://www.castech.com.tw/db/pictures/modules/PDT/PDT060207001/$FILENAME"
+PARTNER_URL="http://www.castlestech.com/wp-content/uploads/2016/08/$FILENAME"
 
 . /usr/share/debconf/confmodule
 
