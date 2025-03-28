@@ -57,8 +57,8 @@ msgstr "Accettare la licenza e scaricare EZ100PU"
 #. Description
 #: ../libez100pu-downloader.templates:20
 msgid ""
-"driver now? EZ100PU driver is to be downloaded from http://www.casauto.com."
+"driver now? EZ100PU driver is to be downloaded from https://www.castlestech.com."
 "tw. This can be done automatically now."
 msgstr ""
 "driver adesso? Il driver EZ100PU sta per essere scaricato da "
-"http://www.casauto.com. Questo può essere fatto automaticamente adesso."
+"https://www.castlestech.com. Questo può essere fatto automaticamente adesso."

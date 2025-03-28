@@ -52,6 +52,6 @@ msgstr ""
 #. Description
 #: ../libez100pu-downloader.templates:20
 msgid ""
-"driver now? EZ100PU driver is to be downloaded from http://www.casauto.com."
+"driver now? EZ100PU driver is to be downloaded from https://www.castlestech.com."
 "tw. This can be done automatically now."
 msgstr ""

@@ -1,16 +1,23 @@
-libez100pu (1.5.3-3) unstable; urgency=low
+libez100pu (1.5.6-1) UNRELEASED; urgency=low
+
+  * Change of company URL.
+  * New drvier version 1.5.6
+
+ -- Daniele Napolitano <dnax88@gmail.com>  Fri, 28 Feb 2025 12:15:01 +0100
+
+libez100pu (1.5.3-3) UNRELEASED; urgency=low
 
   * Change of company URL.
 
  -- Daniele Napolitano <dnax88@gmail.com>  Mon, 02 Nov 2015 10:15:01 +0100
 
-libez100pu (1.5.3-2) unstable; urgency=low
+libez100pu (1.5.3-2) UNRELEASED; urgency=low
 
   * Fixed an udev rule typo
 
  -- Daniele Napolitano <dn@libersoft.it>  Tue, 04 Sep 2012 15:20:37 +0200
 
-libez100pu (1.5.3-1) unstable; urgency=low
+libez100pu (1.5.3-1) UNRELEASED; urgency=low
 
   * Initial Release.
 

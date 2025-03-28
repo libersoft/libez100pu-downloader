@@ -2,10 +2,12 @@
 
 set -e
 
-EZ_VERSION=1.5.3
-FILENAME=2011810151801402.zip
-SHA256SUM_TGZ="ced9161eab8a03ebebd356569f7cb3f8f5ecdca497101520f7160fc863d043cf"
-PARTNER_URL="http://www.castech.com.tw/db/pictures/modules/PDT/PDT060207001/$FILENAME"
+EZ_VERSION=1.5.6
+FILENAME=EZUSB_Linux_x64_v1.5.6.zip
+SHA256SUM_TGZ="4d3f6c12556faafa01ba507cdfa7f0adb16890cd2eb4a48d85d848fc1bc25e0e"
+PARTNER_URL="https://www.castlestech.com/wp-content/uploads/2024/05/$FILENAME"
+
+
 
 . /usr/share/debconf/confmodule
 
@@ -68,7 +70,7 @@ fp_download_and_unpack() {
 	fi # end if local file
 
 	# verify SHA256 checksum of (copied or downloaded) tarball
-	rm -rf 2011810151801402/
+	rm -rf EZUSB_Linux_x64_v$EZ_VERSION/
         echo "$SHA256SUM_TGZ  $FILENAME" | sha256sum -c > /dev/null 2>&1 \
 		|| fp_exit_with_error "sha256sum mismatch $FILENAME"
 
@@ -78,13 +80,7 @@ fp_download_and_unpack() {
 
 fp_download_and_unpack
 
-if uname -p | grep x86_64 > /dev/null 2>&1 ; then
-        FULLPATH=EZUSB_Linux_x86_64_v$EZ_VERSION/driver_ezusb_v${EZ_VERSION}_for_64_bit/drivers
-        unzip EZUSB_Linux/EZUSB_Linux_x86_64_v$EZ_VERSION.zip > /dev/null 2>&1 || fp_exit_with_error "cannot unpack library"
-else
-        FULLPATH=EZUSB_Linux_x86_v$EZ_VERSION/driver_ezusb_v${EZ_VERSION}/drivers
-        unzip EZUSB_Linux/EZUSB_Linux_x86_v$EZ_VERSION.zip > /dev/null 2>&1 || fp_exit_with_error "cannot unpack library"
-fi
+FULLPATH=EZUSB_Linux_x64_v$EZ_VERSION/driver_ezusb_v${EZ_VERSION}/drivers
 
 install -m 644 $FULLPATH/Info.plist /usr/lib/pcsc/drivers/EZ100PU.bundle/Contents/
 install -m 644 $FULLPATH/ezusb.so /usr/lib/pcsc/drivers/EZ100PU.bundle/Contents/Linux/
@@ -99,10 +95,14 @@ db_set libez100pu-downloader/httpget false
 
 case "$1" in
     configure)
-        if [ -x /etc/init.d/pcscd ]
-        then
-            invoke-rc.d pcscd restart 3> /dev/null
-        fi
+        if command -v systemctl >/dev/null; then
+						systemctl restart pcscd
+				else
+						# Altrimenti, usa invoke-rc.d per sistemi che utilizzano sysvinit o compatibilità
+						if [ -x /etc/init.d/pcscd ]; then
+								invoke-rc.d pcscd restart || true
+						fi
+				fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
